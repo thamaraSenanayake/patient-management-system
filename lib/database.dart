@@ -93,8 +93,8 @@ Future<double> calcBmi(String id) async {
   final response = await http.post(url,body: {
     "id":id,
   });
-  
-  return json.decode(response.body);
+  double bmi = double.parse(response.body);
+  return json.decode(bmi.toString());
 }
 
 Future<String> removeMedicine(String id) async {

@@ -8,7 +8,6 @@ import 'package:first/settings/changeDp.dart';
 import 'package:first/settings/changeEmail.dart';
 import 'package:first/settings/changePassword.dart';
 import 'package:flutter/material.dart';
-import 'package:fcharts/fcharts.dart';
 import 'package:first/const.dart';
 import 'package:first/getData.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,7 +53,7 @@ class _HomePageState extends State<HomePage> {
    prefs.setString("ID", '0');
    prefs.setString("Type", '0');
    Navigator.of(context).pop();
-   Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (BuildContext context) => new home()));
+   Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (BuildContext context) => new Home()));
   }
 
   @override
@@ -130,24 +129,6 @@ class MainConetn extends StatefulWidget {
 }
 
 class _MainConetnState extends State<MainConetn> {
-  static const myData = [
-    ["Jan", "10"],
-    ["Feb", "20"],
-    ["Mar", "30"],
-    ["Apr", "10"],
-    ["May", "50"],
-    ["Jun", "20"],
-    ["Jul", "70"],
-  ];
-  static const myData1 = [
-    ["Jan", "20"],
-    ["Feb", "30"],
-    ["Mar", "20"],
-    ["Apr", "40"],
-    ["May", "70"],
-    ["Jun", "10"],
-    ["Jul", "30"],
-  ];
 
   String id;
   String name = "null";
@@ -454,7 +435,7 @@ class _MainConetnState extends State<MainConetn> {
                   ),
                   Container(
                     height: 80.0,
-                    width: 210.0,
+                    width: 180.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
@@ -470,10 +451,17 @@ class _MainConetnState extends State<MainConetn> {
               SizedBox(
                 height: 10.0,
               ),
-              Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    name + "    Age:" + age,
+                    name,
+                    style: TextStyle(
+                        color: Color(Const.blackColor), fontSize: 30.0),
+                    textAlign: TextAlign.left,
+                  ),
+                  Text(
+                    "Age:" + age,
                     style: TextStyle(
                         color: Color(Const.blackColor), fontSize: 30.0),
                     textAlign: TextAlign.left,
@@ -614,7 +602,7 @@ class _MainConetnState extends State<MainConetn> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Padding(
-                                        padding: EdgeInsets.only(right: 8.0),
+                                        padding: EdgeInsets.only(right: 1.0),
                                         child: Icon(
                                           Icons.child_friendly,
                                           color: Colors.white,
@@ -650,7 +638,7 @@ class _MainConetnState extends State<MainConetn> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Padding(
-                                        padding: EdgeInsets.only(right: 8.0),
+                                        padding: EdgeInsets.only(right: 1.0),
                                         child: Icon(
                                           Icons.child_care,
                                           color: Colors.white,
@@ -683,53 +671,7 @@ class _MainConetnState extends State<MainConetn> {
               SizedBox(
                 height: 30.0,
               ),
-              // Row(
-              //   children: <Widget>[
-              //     Expanded(
-              //       child: Container(
-              //         height: 300,
-              //         child: LineChart(
-              //           lines: [
-              //             Line<List<String>, String, String>(
-              //               data: myData,
-              //               xFn: (datum) => datum[0],
-              //               yFn: (datum) => datum[1],
-              //               marker: const MarkerOptions(
-              //                 paint:
-              //                     const PaintOptions.fill(color: Colors.green),
-              //               ),
-              //               stroke:
-              //                   const PaintOptions.stroke(color: Colors.green),
-              //               legend: new LegendItem(
-              //                 paint:
-              //                     const PaintOptions.fill(color: Colors.green),
-              //                 text: 'My BMI',
-              //               ),
-              //             ),
-              //             Line<List<String>, String, String>(
-              //               data: myData1,
-              //               xFn: (datum) => datum[0],
-              //               yFn: (datum) => datum[1],
-              //               marker: const MarkerOptions(
-              //                 paint:
-              //                     const PaintOptions.fill(color: Colors.orange),
-              //               ),
-              //               stroke:
-              //                   const PaintOptions.stroke(color: Colors.orange),
-              //               legend: new LegendItem(
-              //                 paint:
-              //                     const PaintOptions.fill(color: Colors.orange),
-              //                 text: 'Right BMI',
-              //               ),
-              //             ),
-              //           ],
-
-              //           // chartPadding: new EdgeInsets.fromLTRB(30.0, 10.0, 10.0, 30.0),
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+          
               SizedBox(
                 height: 30.0,
               ),
@@ -775,233 +717,13 @@ class _MainConetnState extends State<MainConetn> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 2.0, left: 1.0, right: 1.0),
                       child: Container(
-                        height: 150.0,
+                        height: 170.0,
                         child: bmiWidget,
                       ),
                     ),
                   ),
                 ],
               ),
-
-              // Row(
-              //   children: <Widget>[
-              //     Expanded(
-              //       child: Container(
-              //         height: 150.0,
-              //         child: Column(
-              //           children: <Widget>[
-              //             Container(
-              //               height: 100.0,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(5.0),
-              //                 image: DecorationImage(
-              //                     image: NetworkImage(
-              //                         'https://www.howtogeek.com/wp-content/uploads/2016/01/steam-and-xbox-controllers.jpg'),
-              //                     fit: BoxFit.cover),
-              //               ),
-              //             ),
-              //             SizedBox(
-              //               height: 5.0,
-              //             ),
-              //             Text(
-              //               "first",
-              //               style: TextStyle(
-              //                 fontSize: 18.0,
-              //               ),
-              //               textAlign: TextAlign.center,
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 5.0,
-              //     ),
-              //     Expanded(
-              //       child: Container(
-              //         height: 150.0,
-              //         child: Column(
-              //           children: <Widget>[
-              //             Container(
-              //               height: 100.0,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(5.0),
-              //                 image: DecorationImage(
-              //                     image: NetworkImage(
-              //                         'https://pawanjewellers.in/wp-content/uploads/2016/09/Jewellery-new.jpg'),
-              //                     fit: BoxFit.cover),
-              //               ),
-              //             ),
-              //             SizedBox(
-              //               height: 5.0,
-              //             ),
-              //             Text(
-              //               "Second",
-              //               style: TextStyle(
-              //                 fontSize: 18.0,
-              //               ),
-              //               textAlign: TextAlign.center,
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 5.0,
-              //     ),
-              //     Expanded(
-              //       child: Container(
-              //         height: 150.0,
-              //         child: Column(
-              //           children: <Widget>[
-              //             Container(
-              //               height: 100.0,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(5.0),
-              //                 image: DecorationImage(
-              //                     image: NetworkImage(
-              //                         'http://images4.fanpop.com/image/photos/21600000/Electronics-hd-wallpaper-21627626-1920-1200.jpg'),
-              //                     fit: BoxFit.cover),
-              //               ),
-              //             ),
-              //             SizedBox(
-              //               height: 5.0,
-              //             ),
-              //             Text(
-              //               "Third",
-              //               style: TextStyle(
-              //                 fontSize: 18.0,
-              //               ),
-              //               textAlign: TextAlign.center,
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 15.0,
-              // ),
-              // Row(
-              //   children: <Widget>[
-              //     Expanded(
-              //       child: Text(
-              //         "Trending",
-              //         style: TextStyle(fontSize: 25.0),
-              //       ),
-              //     ),
-              //     Expanded(
-              //       child: Text(
-              //         "View all",
-              //         style:
-              //             TextStyle(color: Colors.greenAccent, fontSize: 18.0),
-              //         textAlign: TextAlign.end,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 10.0,
-              // ),
-
-              // Row(
-              //   children: <Widget>[
-              //     Expanded(
-              //       child: Container(
-              //         height: 150.0,
-              //         child: Column(
-              //           children: <Widget>[
-              //             Container(
-              //               height: 100.0,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(5.0),
-              //                 image: DecorationImage(
-              //                     image: NetworkImage(
-              //                         'https://www.howtogeek.com/wp-content/uploads/2016/01/steam-and-xbox-controllers.jpg'),
-              //                     fit: BoxFit.cover),
-              //               ),
-              //             ),
-              //             SizedBox(
-              //               height: 5.0,
-              //             ),
-              //             Text(
-              //               "first",
-              //               style: TextStyle(
-              //                 fontSize: 18.0,
-              //               ),
-              //               textAlign: TextAlign.center,
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 5.0,
-              //     ),
-              //     Expanded(
-              //       child: Container(
-              //         height: 150.0,
-              //         child: Column(
-              //           children: <Widget>[
-              //             Container(
-              //               height: 100.0,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(5.0),
-              //                 image: DecorationImage(
-              //                     image: NetworkImage(
-              //                         'https://pawanjewellers.in/wp-content/uploads/2016/09/Jewellery-new.jpg'),
-              //                     fit: BoxFit.cover),
-              //               ),
-              //             ),
-              //             SizedBox(
-              //               height: 5.0,
-              //             ),
-              //             Text(
-              //               "Second",
-              //               style: TextStyle(
-              //                 fontSize: 18.0,
-              //               ),
-              //               textAlign: TextAlign.center,
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 5.0,
-              //     ),
-              //     Expanded(
-              //       child: Container(
-              //         height: 150.0,
-              //         child: Column(
-              //           children: <Widget>[
-              //             Container(
-              //               height: 100.0,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(5.0),
-              //                 image: DecorationImage(
-              //                     image: NetworkImage(
-              //                         'http://images4.fanpop.com/image/photos/21600000/Electronics-hd-wallpaper-21627626-1920-1200.jpg'),
-              //                     fit: BoxFit.cover),
-              //               ),
-              //             ),
-              //             SizedBox(
-              //               height: 5.0,
-              //             ),
-              //             Text(
-              //               "Third",
-              //               style: TextStyle(
-              //                 fontSize: 18.0,
-              //               ),
-              //               textAlign: TextAlign.center,
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ],
           )),
         ),

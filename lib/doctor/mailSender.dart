@@ -46,7 +46,7 @@ class _MailSenderState extends State<MailSender> {
     }
 
     if (valid) {
-      mail newMail = new mail(
+      Mail newMail = new Mail(
           to: widget.patientMail,
           subject: _title.currentState.textboxValue,
           text:

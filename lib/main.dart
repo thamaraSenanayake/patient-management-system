@@ -11,29 +11,29 @@ import 'package:first/Const.dart';
 import 'package:first/home.dart';
 
 
-void main() => runApp(home());
+void main() => runApp(Home());
 
-class home extends StatefulWidget {
-  _homeState createState() => _homeState();
+class Home extends StatefulWidget {
+  _HomeState createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "first ui interface",
+      title: "Index page",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Roboto"),
-      home: homeContain(),
+      home: HomeContain(),
     );
   }
 }
 
-class homeContain extends StatefulWidget {
-  _homeContainState createState() => _homeContainState();
+class HomeContain extends StatefulWidget {
+  _HomeContainState createState() => _HomeContainState();
 }
 
-class _homeContainState extends State<homeContain> {
+class _HomeContainState extends State<HomeContain> {
 
   @override
   void initState() {
@@ -160,7 +160,7 @@ class _homeContainState extends State<homeContain> {
 
                           onTap:(){
                             Navigator.pushReplacement(context, MaterialPageRoute(
-                              builder: (context)=> login(),
+                              builder: (context)=> Login(),
                             ));
                           } ,
                         ),
@@ -202,7 +202,7 @@ class _homeContainState extends State<homeContain> {
 
                             onTap:(){
                             Navigator.pushReplacement(context, MaterialPageRoute(
-                              builder: (context)=> signin(),
+                              builder: (context)=> Signin(),
                             ));
                           } ,
                           ),

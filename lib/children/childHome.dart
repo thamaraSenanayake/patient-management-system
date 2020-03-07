@@ -114,25 +114,6 @@ class MainConetn extends StatefulWidget {
 }
 
 class _MainConetnState extends State<MainConetn> {
-  static const myData = [
-    ["Jan", "10"],
-    ["Feb", "20"],
-    ["Mar", "30"],
-    ["Apr", "10"],
-    ["May", "50"],
-    ["Jun", "20"],
-    ["Jul", "70"],
-  ];
-  static const myData1 = [
-    ["Jan", "20"],
-    ["Feb", "30"],
-    ["Mar", "20"],
-    ["Apr", "40"],
-    ["May", "70"],
-    ["Jun", "10"],
-    ["Jul", "30"],
-  ];
-
   
   List medicine = [
     ["loading"]
@@ -444,7 +425,7 @@ class _MainConetnState extends State<MainConetn> {
                   ),
                   Container(
                     height: 80.0,
-                    width: 210.0,
+                    width: 180.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
@@ -641,7 +622,7 @@ class _MainConetnState extends State<MainConetn> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 2.0, left: 1.0, right: 1.0),
                       child: Container(
-                        height: 150.0,
+                        height: 170.0,
                         child: bmiWidget,
                       ),
                     ),

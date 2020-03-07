@@ -16,27 +16,27 @@ final formKey = new GlobalKey<FormState>();
 final userId = new GlobalKey<TextBoxState>();
 final password = new GlobalKey<TextBoxState>();
 
-class login extends StatefulWidget {
-  _loginState createState() => _loginState();
+class Login extends StatefulWidget {
+  _LoginState createState() => _LoginState();
 }
 
-class _loginState extends State<login> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "first ui interface",
+      title: "Login",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Roboto"),
-      home: loginContain(),
+      home: LoginContain(),
     );
   }
 }
 
-class loginContain extends StatefulWidget {
-  _loginContainState createState() => _loginContainState();
+class LoginContain extends StatefulWidget {
+  _LoginContainState createState() => _LoginContainState();
 }
 
-class _loginContainState extends State<loginContain> {
+class _LoginContainState extends State<LoginContain> {
   void _showAlert(String text) {
     AlertDialog dialog = new AlertDialog(
       content: Row(
@@ -320,7 +320,7 @@ class _loginContainState extends State<loginContain> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => signin(),
+                              builder: (context) => Signin(),
                             ));
                       },
                     ),

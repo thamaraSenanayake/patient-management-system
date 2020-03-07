@@ -234,7 +234,7 @@ class _MainConetnState extends State<MainConetn> {
                   ),
                   Container(
                     height: 80.0,
-                    width: 210.0,
+                    width: 180.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,

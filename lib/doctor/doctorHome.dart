@@ -33,7 +33,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
    prefs.setString("ID", '0');
    prefs.setString("Type", '0');
    Navigator.of(context).pop();
-   Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (BuildContext context) => new home()));
+   Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (BuildContext context) => new Home()));
   }
 
   @override
@@ -129,24 +129,6 @@ class MainConetn extends StatefulWidget {
 }
 
 class _MainConetnState extends State<MainConetn> {
-  static const myData = [
-    ["Jan", "10"],
-    ["Feb", "20"],
-    ["Mar", "30"],
-    ["Apr", "10"],
-    ["May", "50"],
-    ["Jun", "20"],
-    ["Jul", "70"],
-  ];
-  static const myData1 = [
-    ["Jan", "20"],
-    ["Feb", "30"],
-    ["Mar", "20"],
-    ["Apr", "40"],
-    ["May", "70"],
-    ["Jun", "10"],
-    ["Jul", "30"],
-  ];
 
   String id;
   String name = "null";
@@ -464,7 +446,7 @@ class _MainConetnState extends State<MainConetn> {
                   ),
                   Container(
                     height: 80.0,
-                    width: 210.0,
+                    width: 180.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
@@ -511,7 +493,7 @@ class _MainConetnState extends State<MainConetn> {
                           padding: EdgeInsets.only(right: 5.0),
                           child: Container(
                             height: 100.0,
-                            width: 50.0,
+                            // width: 50.0,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 color: Colors.redAccent),
@@ -634,7 +616,7 @@ class _MainConetnState extends State<MainConetn> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Padding(
-                                        padding: EdgeInsets.only(right: 8.0),
+                                        padding: EdgeInsets.only(right: 1.0),
                                         child: Icon(
                                           Icons.child_friendly,
                                           color: Colors.white,
@@ -670,7 +652,7 @@ class _MainConetnState extends State<MainConetn> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Padding(
-                                        padding: EdgeInsets.only(right: 8.0),
+                                        padding: EdgeInsets.only(right: 1.0),
                                         child: Icon(
                                           Icons.child_care,
                                           color: Colors.white,
@@ -791,7 +773,7 @@ class _MainConetnState extends State<MainConetn> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 2.0, left: 1.0, right: 1.0),
                       child: Container(
-                        height: 150.0,
+                        height: 170.0,
                         child: bmiWidget,
                       ),
                     ),

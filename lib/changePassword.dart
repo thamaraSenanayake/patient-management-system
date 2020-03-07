@@ -23,7 +23,7 @@ void changePassword(String id) async {
     newPassword,
   ).then((s) {
     response = s;
-    mail newMail = new mail(
+    Mail newMail = new Mail(
         to: response,
         subject: "passwrodChange",
         text: 'your new password '+ newPassword);

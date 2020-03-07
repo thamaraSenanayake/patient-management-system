@@ -21,7 +21,6 @@ final _addChildDate = new GlobalKey<TextBoxState>();
 final _addChildHeight = new GlobalKey<TextBoxState>();
 final _addChildWeight = new GlobalKey<TextBoxState>();
 
-
 var selectedBloodGroup = "Select Blood group";
 
 var gender;
@@ -38,7 +37,6 @@ var bloodGroups = [
   'AB-'
 ];
 
-
 class addChild extends StatefulWidget {
   String type;
   addChild({this.type});
@@ -52,7 +50,9 @@ class _addChildState extends State<addChild> {
       title: "first ui interface",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Roboto"),
-      home: MainConatain(type: widget.type,),
+      home: MainConatain(
+        type: widget.type,
+      ),
     );
   }
 }
@@ -74,30 +74,31 @@ class _MainConatainState extends State<MainConatain> {
     init();
   }
 
-  void init() async{
+  void init() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     id = (prefs.getString("ID") ?? '0');
   }
 
-  
-
-  void _showAlert(String text){
+  void _showAlert(String text) {
     AlertDialog dialog = new AlertDialog(
-    content: Row(
-      children: <Widget>[
-        Icon(
-          Icons.error,
-          color: Colors.red,),
-        SizedBox(
-          width: 10.0,
-        ),
-        Text(text,style:TextStyle(color: Colors.red),),
-      ],
-    ),
-      
+      content: Row(
+        children: <Widget>[
+          Icon(
+            Icons.error,
+            color: Colors.red,
+          ),
+          SizedBox(
+            width: 10.0,
+          ),
+          Text(
+            text,
+            style: TextStyle(color: Colors.red),
+          ),
+        ],
+      ),
     );
 
-    showDialog(context: context,child: dialog);
+    showDialog(context: context, child: dialog);
   }
 
   SetSelectedRadio(int val) {
@@ -109,55 +110,57 @@ class _MainConatainState extends State<MainConatain> {
   void _signInOnClick() async {
     final from = _addChildFormKey.currentState;
     bool valid = false;
-    
+
     if (from.validate()) {
       from.save();
       valid = true;
     }
 
-    if(valid == true){
-      if(selectedBloodGroup == "Select Blood group"){
+    if (valid == true) {
+      if (selectedBloodGroup == "Select Blood group") {
         _showAlert("select a blood group");
         valid = false;
       }
-      
     }
-    
+
     print(valid);
     String response;
-    String birthday = _addChildYear.currentState.textboxValue+"-"+_addChildMonth.currentState.textboxValue+"-"+_addChildDate.currentState.textboxValue;
+    String birthday = _addChildYear.currentState.textboxValue +
+        "-" +
+        _addChildMonth.currentState.textboxValue +
+        "-" +
+        _addChildDate.currentState.textboxValue;
 
     if (valid == true) {
       await addChildDatabase(
-              _addChildName.currentState.textboxValue,
-              birthday,
-              _addChildWeight.currentState.textboxValue,
-              _addChildHeight.currentState.textboxValue,
-              gender,
-              selectedBloodGroup,
-              id,
-              )
-          .then((s) {
+        _addChildName.currentState.textboxValue,
+        birthday,
+        _addChildWeight.currentState.textboxValue,
+        _addChildHeight.currentState.textboxValue,
+        gender,
+        selectedBloodGroup,
+        id,
+      ).then((s) {
         response = s;
       });
 
       print("Response" + response);
 
-    
-
       if (response != "Error") {
         var now = new DateTime.now();
         List<String> currentyear = now.toString().split("-");
-        int age = int.parse(currentyear[0]) - int.parse(_addChildYear.currentState.textboxValue);
-        
+        int age = int.parse(currentyear[0]) -
+            int.parse(_addChildYear.currentState.textboxValue);
+
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => childHomePage(childId: response,childName:_addChildName.currentState.textboxValue,childAge: age.toString()),
+              builder: (context) => childHomePage(
+                  childId: response,
+                  childName: _addChildName.currentState.textboxValue,
+                  childAge: age.toString()),
             ));
-      }
-
-      else{
+      } else {
         _showAlert(response);
       }
     }
@@ -170,45 +173,29 @@ class _MainConatainState extends State<MainConatain> {
         backgroundColor: Color(Const.orngeColor),
         title: Text("Add Child"),
         actions: <Widget>[
-
           IconButton(
             icon: Icon(Icons.home),
             onPressed: () {
-              // 
+              //
               if (widget.type == "doctor") {
-                      Navigator.of(context).pushReplacement(
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new DoctorHomePage()));
-                    } else if (widget.type == "nurse") {
-                      Navigator.of(context).pushReplacement(
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new NurseHomePage()));
-                    } else if (widget.type == "otherServices") {
-                      Navigator.of(context).pushReplacement(
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new OtherServiceHome()));
-                    } else if (widget.type == "pharmacist") {
-                      Navigator.of(context).pushReplacement(
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new PharmacistHome()));
-                    } else if (widget.type == "ambulance") {
-                      Navigator.of(context).pushReplacement(
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new AmbulanceHome()));
-                    } else {
-                      Navigator.of(context).pushReplacement(
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new HomePage()));
-                    }
-              
-              
-
+                Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                    builder: (BuildContext context) => new DoctorHomePage()));
+              } else if (widget.type == "nurse") {
+                Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                    builder: (BuildContext context) => new NurseHomePage()));
+              } else if (widget.type == "otherServices") {
+                Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                    builder: (BuildContext context) => new OtherServiceHome()));
+              } else if (widget.type == "pharmacist") {
+                Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                    builder: (BuildContext context) => new PharmacistHome()));
+              } else if (widget.type == "ambulance") {
+                Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                    builder: (BuildContext context) => new AmbulanceHome()));
+              } else {
+                Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                    builder: (BuildContext context) => new HomePage()));
+              }
             },
           )
         ],
@@ -218,7 +205,6 @@ class _MainConatainState extends State<MainConatain> {
         child: Stack(
           alignment: Alignment.topCenter,
           children: <Widget>[
-            
             Row(
               children: <Widget>[
                 Padding(
@@ -238,7 +224,8 @@ class _MainConatainState extends State<MainConatain> {
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding:EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
                       child: textBox(
                           textBoxType: 2,
                           key: _addChildName,
@@ -260,8 +247,6 @@ class _MainConatainState extends State<MainConatain> {
                     SizedBox(
                       height: 10.0,
                     ),
-                    
-
                     Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
@@ -303,7 +288,7 @@ class _MainConatainState extends State<MainConatain> {
                           ),
                           Container(
                             height: 50.0,
-                            width: 80.0,
+                            width: 55.0,
                             child: textBox(
                                 textBoxType: 1,
                                 key: _addChildMonth,
@@ -327,7 +312,7 @@ class _MainConatainState extends State<MainConatain> {
                           ),
                           Container(
                             height: 50.0,
-                            width: 80.0,
+                            width: 55.0,
                             child: textBox(
                                 textBoxType: 1,
                                 key: _addChildDate,
@@ -370,29 +355,39 @@ class _MainConatainState extends State<MainConatain> {
                           Container(
                             height: 50.0,
                             width: 130.0,
-                            child: RadioListTile(
-                              value: 1,
-                              groupValue: selectedRadio,
-                              title: Text("Male"),
-                              onChanged: (val) {
-                                SetSelectedRadio(val);
-                                gender = 'm';
-                              },
-                              activeColor: Color(Const.orngeColor),
+                            child: Row(
+                              children: <Widget>[
+                                Radio(
+                                  value: 1,
+                                  groupValue: selectedRadio,
+                                  // title: Text("Male"),
+                                  onChanged: (val) {
+                                    SetSelectedRadio(val);
+                                    gender = 'm';
+                                  },
+                                  activeColor: Color(Const.orngeColor),
+                                ),
+                                Text("Male")
+                              ],
                             ),
                           ),
                           Container(
                             height: 50.0,
-                            width: 154.0,
-                            child: RadioListTile(
-                              value: 2,
-                              groupValue: selectedRadio,
-                              title: Text("Female"),
-                              onChanged: (val) {
-                                SetSelectedRadio(val);
-                                gender = 'f';
-                              },
-                              activeColor: Color(Const.orngeColor),
+                            width: 124.0,
+                            child: Row(
+                              children: <Widget>[
+                                Radio(
+                                  value: 2,
+                                  groupValue: selectedRadio,
+                                  // title: "Female",
+                                  onChanged: (val) {
+                                    SetSelectedRadio(val);
+                                    gender = 'f';
+                                  },
+                                  activeColor: Color(Const.orngeColor),
+                                ),
+                                Text("Female")
+                              ],
                             ),
                           ),
                         ],
@@ -525,18 +520,15 @@ class _MainConatainState extends State<MainConatain> {
                     SizedBox(
                       height: 70.0,
                     ),
-                
                     Padding(
                       padding: EdgeInsets.only(left: 200, right: 20.0),
                       child: GestureDetector(
                         child: Container(
-                          
                           height: 50.0,
                           decoration: BoxDecoration(
                               color: Colors.brown,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0))),
-                          
                           child: ButtonTheme(
                             minWidth: 175.0,
                             child: RaisedButton(
@@ -557,7 +549,6 @@ class _MainConatainState extends State<MainConatain> {
                         ),
                       ),
                     ),
-
                     SizedBox(
                       height: 25.0,
                     )

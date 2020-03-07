@@ -618,7 +618,7 @@ class _MainConetnState extends State<MainConetn> {
                   ),
                   Container(
                     height: 80.0,
-                    width: 210.0,
+                    width: 180.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
@@ -855,7 +855,7 @@ class _MainConetnState extends State<MainConetn> {
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Padding(
-                                          padding: EdgeInsets.only(right: 8.0),
+                                          padding: EdgeInsets.only(right: 0.0),
                                           child: Icon(
                                             Icons.remove,
                                             color: Colors.white,
@@ -864,7 +864,7 @@ class _MainConetnState extends State<MainConetn> {
                                         Text("Mark as dead",
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 15.0)),
+                                                fontSize: 13.0)),
                                       ],
                                     ),
                                   ),
@@ -936,7 +936,7 @@ class _MainConetnState extends State<MainConetn> {
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Padding(
-                                          padding: EdgeInsets.only(right: 8.0),
+                                          padding: EdgeInsets.only(right: 0.0),
                                           child: Icon(
                                             Icons.add,
                                             color: Colors.white,
@@ -1036,7 +1036,7 @@ class _MainConetnState extends State<MainConetn> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 2.0, left: 1.0, right: 1.0),
                       child: Container(
-                        height: 150.0,
+                        height: 170.0,
                         child: bmiWidget,
                       ),
                     ),

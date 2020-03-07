@@ -40,27 +40,27 @@ var provinceList = ['Select province', 'Western', 'North western','southern','no
 var districtList = ['Select District'];
 var cityList = ['Select city'];
 
-class signin extends StatefulWidget {
-  _signinState createState() => _signinState();
+class Signin extends StatefulWidget {
+  _SigninState createState() => _SigninState();
 }
 
-class _signinState extends State<signin> {
+class _SigninState extends State<Signin> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "first ui interface",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Roboto"),
-      home: signinContain(),
+      home: SigninContain(),
     );
   }
 }
 
-class signinContain extends StatefulWidget {
-  _signinContainState createState() => _signinContainState();
+class SigninContain extends StatefulWidget {
+  _SigninContainState createState() => _SigninContainState();
 }
 
-class _signinContainState extends State<signinContain> {
+class _SigninContainState extends State<SigninContain> {
   int selectedRadio;
 
   @override
@@ -802,7 +802,7 @@ class _signinContainState extends State<signinContain> {
 
                         onTap: (){
                             Navigator.pushReplacement(context, MaterialPageRoute(
-                                  builder: (context)=> login(),
+                                  builder: (context)=> Login(),
                                 ));
                         },
 
